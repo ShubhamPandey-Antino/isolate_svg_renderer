@@ -18,12 +18,20 @@ class IsolateSvgLoader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: _loadSvg(assetPath,context),
+      future: _loadSvg(assetPath, context),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: const CircularProgressIndicator());
+          return SizedBox(
+            width: width,
+            height: height,
+            child: Center(child: const CircularProgressIndicator()),
+          );
         } else if (snapshot.hasError) {
-          return Center(child: const Icon(Icons.error));
+          return SizedBox(
+            width: width,
+            height: height,
+            child: Center(child: const Icon(Icons.error)),
+          );
         } else {
           return SvgPicture.string(
             snapshot.data!,
@@ -35,8 +43,7 @@ class IsolateSvgLoader extends StatelessWidget {
     );
   }
 
-
-  Future<String> _loadSvg(String assetPath,BuildContext context) async {
+  Future<String> _loadSvg(String assetPath, BuildContext context) async {
     final cached = SvgCache.get(assetPath);
     if (cached != null) return cached;
 
@@ -46,5 +53,4 @@ class IsolateSvgLoader extends StatelessWidget {
     SvgCache.set(assetPath, optimized);
     return optimized;
   }
-
 }
