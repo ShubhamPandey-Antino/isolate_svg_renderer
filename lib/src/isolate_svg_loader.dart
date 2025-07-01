@@ -21,9 +21,9 @@ class IsolateSvgLoader extends StatelessWidget {
       future: _loadSvg(assetPath,context),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
+          return Center(child: const CircularProgressIndicator());
         } else if (snapshot.hasError) {
-          return const Icon(Icons.error);
+          return Center(child: const Icon(Icons.error));
         } else {
           return SvgPicture.string(
             snapshot.data!,
