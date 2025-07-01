@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       home: Scaffold(
         body: Center(
-          child: IsolateSvgLoader(assetPath: 'assets/large_image.svg'),
+          child: IsolateSvgWidget(assetPath: 'assets/large_image.svg'),
         ),
       ),
     );
