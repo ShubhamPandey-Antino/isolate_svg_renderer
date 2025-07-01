@@ -1,6 +1,6 @@
 name: isolate_svg_renderer
 description: "Flutter Svg Renderer with isolates"
-version: 0.0.3
+version: 0.0.5
 homepage:
 
 environment:
